@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Where is the ISS?</title>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link href="main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <h1>Where is the International Space Station?</h1>
+        <section>
+            <p>Description of what this application is all about.</p>
+        </section>
+    </header>
+    <main>
+
+        <section>
+            <p>Activity section -- user will click buttons and provide input for the APIs.</p>
+
+            <label for="query">
+                <form action="#" class="js-search-form">
+                    <p>(input answer here)</p>
+                    <p>v</p>
+                    <input type="text" class="js-query">
+                    <p><button type="submit">Search</button></p>
+                    <p>^</p>
+                    <p>(then click here)</p>
+                </form>
+            </label>
+        </section>
+        <section>
+            <div class="js-search-results">
+                <h2 aria-live="assertive"></h2>
+                <ul></ul>
+
+            </div>
+        </section>
+    </main>
+    <footer>Footer content here - contact information</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
