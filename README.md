@@ -12,4 +12,5 @@ This app is for three types of users.
 ![Wireframe _User Case 1](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-case-1.pdf)
 ![Wireframe _User Case 2](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-case-2.pdf)
 ![Wireframe _User Case 3](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-case-3.pdf)
+![Wireframe _User Case 3](wireframe/wireframe-iss-user-case-3.jpeg)
 
