@@ -11,9 +11,5 @@ This app is for three types of users.
 ![UI Flow handwritten draft](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/imgs/ui-flow.jpg)
 ### Wireframe _main
 ![Wireframe _Main](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-main.jpg)
-### Wireframe _User Case 1
-![Wireframe _User Case 1](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-case-1.jpg)
-### Wireframe _User Case 2
-![Wireframe _User Case 2](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-case-2.jpg)
-### Wireframe _User Case 3
-![Wireframe _User Case 3](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-case-3.jpg)
+### Wireframe _User Cases
+![Wireframe _User Case 1](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-cases.jpg)
