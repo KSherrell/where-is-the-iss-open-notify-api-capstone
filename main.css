@@ -1,0 +1,88 @@
+html {}
+
+body {
+    box-sizing: border-box;
+    background-image: url(imgs/station_3.jpg), url(imgs/bg_dot.jpg);
+    background-size: auto, auto;
+    background-repeat: no-repeat, repeat;
+    background-position: bottom right, top left;
+    background-attachment: fixed;
+    background-color: #000000;
+    font-family: 'Vollkorn', serif;
+    color: #e3eaf0;
+}
+
+header {
+    width: 60%;
+    margin: 0 0 0 15%;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #70b3ea;
+    text-shadow: 1px 1px 0px #b5e6f9;
+}
+
+header p {
+    margin: 1.5% auto;
+    font-size: 1.1rem;
+}
+
+main {
+    width: 60%;
+    margin: 0 0 0 15%;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+h2 {
+    font-family: 'Monda', sans-serif;
+    font-size: 2rem;
+    color: #70b3ea;
+    text-shadow: 1px 1px 0px #b5e6f9;
+    margin: 0;
+}
+
+section {
+    border: 1px solid #e3eaf0;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2%;
+}
+
+.activity {
+    width: 30%;
+}
+
+.activity p {}
+
+.activity div {}
+
+.activity form {}
+
+.response {
+    width: 60%;
+    margin-left: 3%;
+}
+
+.response div {}
+
+.crew {
+    width: 100%;
+}
+
+.videos {
+    width: 66%;
+}
+
+.facts {
+    width: 33%;
+}
+
+footer {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
