@@ -1,47 +1,54 @@
 "use strict";
 
-$(document).ready(function () {
 
-    $(".js-search-form").submit(function (event) {
-        event.preventDefault();
-        var searchTerm = $(".js-query").val();
-        console.log(searchTerm + " is the searchTerm");
-        getVideos(searchTerm);
+$(document).ready(function () {
+    /* Update all the parameters for your API test*/
+    /* var params = {
+         tagged: 'html',
+         site: 'stackoverflow',
+         order: 'desc',
+         sort: 'creation'
+     };*/
+    $(".js-currentTime").click(function () {
+        var currentLocation = $.ajax({
+                url: "http://api.open-notify.org/iss-now.json",
+                dataType: "jsonp",
+                type: "GET"
+            })
+            .done(function (currentLocation) {
+                console.log(currentLocation);
+
+                var issLat = Number(currentLocation.iss_position.latitude);
+                var issLon = Number(currentLocation.iss_position.longitude);
+                initMap(issLat, issLon);
+                $("#description").text("The International Space Station is currently flying over " + issLat + " latitude, " + issLon + " longitude.")
+            })
+
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
     })
 
-    function getVideos(searchTerm) {
-        $.getJSON("https://www.googleapis.com/youtube/v3/search", {
-                key: "AIzaSyCJn4EgqP8i7Gt5S8yV1QGRFfXt53khN8k",
-                part: "snippet",
-                maxResults: 12,
-                q: searchTerm,
-                type: "video"
-            },
-            function (cake) {
-                if (cake.pageInfo.totalResults == 0) {
-                    alert("No videos found!")
-                } else {
-                    displayResults(cake.items, searchTerm)
-                }
-            }
-        )
-    }
 
-    function displayResults(videoList, searchTerm) {
+});
+var map;
 
-        var htmlOutput = "";
-        $.each(videoList, function (key, value) {
-            htmlOutput += `
-                            <li>
-                                <a href='https://www.youtube.com/watch?v=${value.id.videoId} target='blank'>
-                                <img src='${value.snippet.thumbnails.medium.url}' alt="${searchTerm} photo #${key+1}."/>
-                                </a>
-                                <p>${value.snippet.title}</p>
-                            </li>
-                        `;
-
-        });
-        $(".js-search-results ul").html(htmlOutput);
-        $("h2").text(`Voila! Here are 12 ${searchTerm} videos for you to enjoy!`);
-    }
-})
+function initMap(issLat, issLon) {
+    //alert("map!");
+    $("#map")
+    var uluru = {
+        lat: issLat,
+        lng: issLon
+    };
+    console.log(uluru);
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: uluru
+    });
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+    });
+}

@@ -1,5 +1,9 @@
 html {}
 
+* {
+    border: 1px solid white;
+}
+
 body {
     box-sizing: border-box;
     background-image: url(imgs/station_3.jpg), url(imgs/bg_dot.jpg);
@@ -46,7 +50,6 @@ h2 {
 }
 
 section {
-    border: 1px solid #e3eaf0;
     display: inline-block;
     vertical-align: top;
     margin-top: 2%;
@@ -67,7 +70,13 @@ section {
     margin-left: 3%;
 }
 
-.response div {}
+#map {
+    height: 350px;
+}
+
+#description {
+    height: auto;
+}
 
 .crew {
     width: 100%;
