@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    width: 60%;
+    width: 55%;
     margin: 0 0 0 15%;
 }
 
@@ -30,15 +30,37 @@ h1 {
 }
 
 header p {
-    margin: 1.5% auto;
+    margin: .5rem auto;
     font-size: 1.1rem;
+    width: 45%;
+    float: right;
+}
+
+header div {
+    float: left;
+    width: 560px;
+    height: 315px;
+}
+
+header div iframe {
+    width: 100%;
+    height: 100%;
 }
 
 main {
-    width: 60%;
-    margin: 0 0 0 15%;
-    border-radius: 20px;
+    width: 55%;
+    margin-left: 15%;
+    padding-top: .5rem;
     font-size: 1rem;
+    clear: both;
+}
+
+h3 {
+    font-family: 'Monda', sans-serif;
+    font-size: 1.5rem;
+    color: #70b3ea;
+    text-shadow: 1px 1px 0px #b5e6f9;
+    margin: 25px 0 -35px;
 }
 
 h2 {
@@ -46,28 +68,18 @@ h2 {
     font-size: 2rem;
     color: #70b3ea;
     text-shadow: 1px 1px 0px #b5e6f9;
-    margin: 0;
+    margin-bottom: .5rem;
 }
 
 section {
     display: inline-block;
     vertical-align: top;
-    margin-top: 2%;
+    margin-top: .5rem;
 }
 
-.activity {
-    width: 30%;
-}
-
-.activity p {}
-
-.activity div {}
-
-.activity form {}
-
-.response {
-    width: 60%;
-    margin-left: 3%;
+.sectionOne {
+    width: 100%;
+    margin-top: 0;
 }
 
 #map {
@@ -82,16 +94,61 @@ section {
     width: 100%;
 }
 
-.videos {
-    width: 66%;
-}
-
 .facts {
     width: 33%;
 }
 
 footer {
-    width: 60%;
+    width: 55%;
     margin: auto;
     text-align: center;
+}
+
+@media screen and (max-width: 375px) {
+    body {
+        box-sizing: border-box;
+        background-image: url(imgs/bg_dot.jpg);
+        background-size: auto;
+        background-repeat: repeat;
+        background-position: top left;
+        background-color: #000000;
+        font-family: 'Vollkorn', serif;
+        color: #e3eaf0;
+    }
+    header {
+        width: 100%;
+        margin: 0;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    header p {
+        margin: 3% auto;
+        padding: 5px;
+        font-size: 1.1rem;
+        width: 100%;
+        float: none;
+    }
+    header div {
+        float: none;
+        width: 100%;
+    }
+    main {
+        width: 100%;
+        margin: 0;
+        font-size: 1rem;
+    }
+    h3 {
+        font-family: 'Monda', sans-serif;
+        font-size: 1.2rem;
+        color: #70b3ea;
+        text-shadow: 1px 1px 0px #b5e6f9;
+        margin: 25px 0 -35px;
+    }
+    h2 {
+        font-family: 'Monda', sans-serif;
+        font-size: 1.5rem;
+        color: #70b3ea;
+        text-shadow: 1px 1px 0px #b5e6f9;
+    }
 }
