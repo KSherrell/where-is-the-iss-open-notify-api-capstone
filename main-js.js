@@ -5,8 +5,8 @@
 
 function refreshLocation() {
     var refreshLoc = setInterval(currLoc, 7000);
-    //alert("refresh!");
-    currLoc();
+    // alert("refresh!");
+
 }
 
 function currLoc() {
@@ -16,7 +16,7 @@ function currLoc() {
             type: "GET"
         })
         .done(function (currentLocation) {
-            console.log(currentLocation);
+            //console.log(currentLocation);
 
             var issLat = Number(currentLocation.iss_position.latitude);
             var issLon = Number(currentLocation.iss_position.longitude);
@@ -43,7 +43,7 @@ function currCrew() {
             var crew = currentCrewMembers;
             console.log(crew.people);
             $(".numberOfAstros").text(`${crew.number}`);
-            $.each(crew.people, function (key, name) {
+            $.each(crew.people, function (key, value) {
                 console.log(crew.people[key].name);
                 $("#astronauts").append(`<li>${crew.people[key].name}</li>`);
             });
@@ -64,7 +64,7 @@ function initMap(issLat, issLon) {
         lat: issLat,
         lng: issLon
     };
-    console.log(uluru);
+    //console.log(uluru);
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 7,
         center: uluru,
@@ -80,8 +80,57 @@ function initMap(issLat, issLon) {
     });
 }
 
+document.getElementById('submit').addEventListener('click', function () {
+    var geocoder = new google.maps.Geocoder();
+    geocodeAddress(geocoder);
+});
 
+function geocodeAddress(geocoder) {
+    var address = document.getElementById('address').value;
+    geocoder.geocode({
+        'address': address
+    }, function (results, status) {
+        if (status === 'OK') {
+            var myLon = results[0].geometry.viewport.b.f;
+            var myLat = results[0].geometry.viewport.f.f;
+            //var myLat = 40.52;
+            //var myLon = -104.55;
+            console.log(results);
+            console.log(myLat, myLon);
+            console.log($.isNumeric(myLat));
+            console.log($.isNumeric(myLon));
+            alert("overheadISS!");
+            var params = {
+                lat: myLat,
+                lon: myLon,
+                n: 3
+            }
+            var nextPass = $.ajax({
+                    url: "http://api.open-notify.org/iss-pass.json",
+                    data: params,
+                    dataType: "jsonp",
+                    type: "GET"
+                })
+                .done(function (nextPass) {
+                    console.log(nextPass);
+                    $.each(nextPass.response, function (key, value) {
+                        console.log(nextPass.response[key].risetime);
+                        // $("#nextPass").append(`<p>${nextPass.response[key].risetime}</p>`);
+                    })
 
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        };
+    });
+}
 
-//$(refreshLocation());
+$(currLoc());
+$(refreshLocation());
 $(currCrew());
+$(geocodeAddress());
