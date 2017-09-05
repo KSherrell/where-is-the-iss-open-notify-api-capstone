@@ -1,11 +1,12 @@
 "use strict";
 
-var refreshLoc;
+//var refreshLoc;
 // alert("ready!");
 
 function refreshLocation() {
-    refreshLoc = setInterval(currLoc, 5000);
+    var refreshLoc = setInterval(currLoc, 7000);
     //alert("refresh!");
+    currLoc();
 }
 
 function currLoc() {
@@ -20,7 +21,32 @@ function currLoc() {
             var issLat = Number(currentLocation.iss_position.latitude);
             var issLon = Number(currentLocation.iss_position.longitude);
             initMap(issLat, issLon);
-            $("#description").text("The International Space Station is currently flying over " + issLat + " latitude, " + issLon + " longitude.")
+            $("#description").html(`<p>The International Space Station is currently flying over</p><p class="descp">LATITUDE: <span>${issLat}</span></p><p class="descp"> LONGITUDE: <span>${issLon}</span></p>`);
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function currCrew() {
+    var currentCrewMembers = $.ajax({
+            url: "http://api.open-notify.org/astros.json",
+            dataType: "jsonp",
+            type: "GET"
+        })
+        .done(function (currentCrewMembers) {
+            console.log(currentCrewMembers);
+
+            var crew = currentCrewMembers;
+            console.log(crew.people);
+            $(".numberOfAstros").text(`${crew.number}`);
+            $.each(crew.people, function (key, name) {
+                console.log(crew.people[key].name);
+                $("#astronauts").append(`<li>${crew.people[key].name}</li>`);
+            });
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -56,5 +82,6 @@ function initMap(issLat, issLon) {
 
 
 
-$(currLoc());
-$(refreshLocation());
+
+//$(refreshLocation());
+$(currCrew());

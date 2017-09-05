@@ -1,9 +1,5 @@
 html {}
 
-* {
-    border: 1px solid white;
-}
-
 body {
     box-sizing: border-box;
     background-image: url(imgs/station_3.jpg), url(imgs/bg_dot.jpg);
@@ -19,6 +15,10 @@ body {
 header {
     width: 55%;
     margin: 0 0 0 15%;
+}
+
+a {
+    color: #70b3ea;
 }
 
 h1 {
@@ -74,10 +74,10 @@ h2 {
 section {
     display: inline-block;
     vertical-align: top;
-    margin-top: .5rem;
+    margin-top: 1rem;
 }
 
-.sectionOne {
+.whereISS {
     width: 100%;
     margin-top: 0;
 }
@@ -88,19 +88,71 @@ section {
 
 #description {
     height: auto;
+    text-align: center;
+}
+
+.descp {
+    display: inline-block;
+    margin: 0 1.2rem;
+}
+
+.descp span {
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    color: #ffae23;
+}
+
+.numberOfAstros {
+    color: #ffae23;
+    font-size: 1.1rem;
 }
 
 .crew {
-    width: 100%;
+    width: 45%;
 }
 
-.facts {
-    width: 33%;
+ul {
+    margin: -10px 0 10px 0;
+}
+
+li {
+    font-size: 1.1rem;
+    list-style-type: circle;
+    padding: 3px;
+}
+
+.news {
+    width: 45%;
+    float: right;
+}
+
+.news iframe {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    border: 0;
+}
+
+.viewISS {
+    width: 45%;
+    float: right;
+}
+
+.viewISS form {}
+
+.viewISS button {
+    width: 100px;
+    height: 25px;
+    background-color: #ffae23;
+    border-radius: 15px;
+    border: 1px solid black;
+    font-size: .75rem;
+    font-weight: 700;
 }
 
 footer {
     width: 55%;
-    margin: auto;
+    margin-left: 15%;
     text-align: center;
 }
 

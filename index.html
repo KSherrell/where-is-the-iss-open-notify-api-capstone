@@ -20,49 +20,41 @@
 
     </header>
     <main>
-        <h3>Where is the</h3>
-        <h2>International Space Station?</h2>
-        <section class="sectionOne">
-            <p>The map below is updated every 10 seconds with the location of the ISS as it travels around the earth.</p>
+        <section class="whereISS">
+            <h3>Where is the</h3>
+            <h2>International Space Station?</h2>
+            <p>The map below is updated every 7 seconds with the location of the ISS as it travels around the earth.</p>
             <div id="map"></div>
             <div id="description"></div>
         </section>
         <section class="crew">
             <h2>The Crew</h2>
-            <p>The International Space Station carries a crew of 6 people,
-            </p>
+
+            <p>The International Space Station is truly an exciting <a href="https://www.nasa.gov/mission_pages/station/cooperation/index.html" target="blank">international endeavor</a> and carries multinational crews of astronauts from the United States, Russia, Europe, Japan, and Canada. </p>
+            <p>There are currently <span class="numberOfAstros"></span> astronauts onboard the space station:</p>
+
+            <ul id="astronauts"></ul>
+            <a href="https://www.nasa.gov/mission_pages/station/expeditions/expedition53/index.html" target="blank">Click here to visit the NASA website</a> to learn more about the crew of the International Space Station.
+        </section>
+
+        <!-- <section class="news">
+            <h2>ISS News</h2>
+            <iframe src="http://output10.rssinclude.com/output?type=iframe&amp;id=1153762&amp;hash=6812144aa2b011c2fea4ea5f8bb582f7"></iframe>
+        </section>-->
+
+        <section class="viewISS">
+            <h3>View the</h3>
+            <h2>International Space Station</h2>
+            <p>When will the space station be traveling overhead? <br>Submit your location below to find out!</p>
+
+            <label for="query">
+<form action="#" class="js-search-form">
+    <input type="text" class="js-query"> <button type="submit">View the ISS</button>
+</form>
+</label>
 
         </section>
 
-        <section class="facts"></section>
-        <!--<div>
-<p>Activity section -- user will click buttons and provide input for the APIs.</p>
-
-<label for="query">
-<form action="#" class="js-search-form">
-<p>(input answer here)</p>
-<p>v</p>
-<input type="text" class="js-query">
-<p><button type="submit">Search</button></p>
-<p>^</p>
-<p>(then click here)</p>
-</form>
-</label>
-</div>
-<div>
-<p>Activity section -- user will click buttons and provide input for the APIs.</p>
-
-<label for="query">
-<form action="#" class="js-search-form">
-<p>(input answer here)</p>
-<p>v</p>
-<input type="text" class="js-query">
-<p><button type="submit">Search</button></p>
-<p>^</p>
-<p>(then click here)</p>
-</form>
-</label>
-</div>-->
     </main>
     <footer>Footer content here - contact information</footer>
 
