@@ -15,7 +15,7 @@ This app is for three types of users.
 ![Wireframe _User Case 1](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-cases.jpg)
 
 ## Working Prototype
-You can access a working prototype of the app here: https://ksherrell.github.io/where-is-the-iss-open-notify-api-capstone/
+You can access a working prototype of the app here: http://where-is-the-iss-open-notify-api-capstone.learn2code.club/
 
 ## Functionality
 The app's functionality includes:
