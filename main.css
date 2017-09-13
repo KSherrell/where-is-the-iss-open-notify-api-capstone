@@ -127,6 +127,10 @@ li {
     float: right;
 }
 
+#address {
+    margin: 0 10px;
+}
+
 .viewISS button {
     width: 100px;
     height: 25px;

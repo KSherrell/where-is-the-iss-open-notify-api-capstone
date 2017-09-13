@@ -25,7 +25,7 @@
                 lng: issLon
             };
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 3,
+                zoom: 4,
                 center: uluru,
                 disableDefaultUI: true,
                 zoomControl: true
@@ -40,7 +40,7 @@
 
         function currLoc() {
             var currentLocation = $.ajax({
-                    url: "https://crossorigin.me/http://api.open-notify.org/iss-now.json",
+                    url: "http://api.open-notify.org/iss-now.json",
                     dataType: "jsonp",
                     type: "GET"
                 })
@@ -60,7 +60,7 @@
 
         function currCrew() {
             var currentCrewMembers = $.ajax({
-                    url: "https://crossorigin.me/http://api.open-notify.org/astros.json",
+                    url: "http://api.open-notify.org/astros.json",
                     dataType: "jsonp",
                     type: "GET"
                 })
@@ -94,7 +94,7 @@
                             n: 3
                         }
                         var nextPass = $.ajax({
-                                url: "https://crossorigin.me/http://api.open-notify.org/iss-pass.json",
+                                url: "http://api.open-notify.org/iss-pass.json",
                                 data: params,
                                 dataType: "jsonp",
                                 type: "GET"
@@ -106,7 +106,7 @@
 
                                     function convertUnixTimeCallback(result) {}
                                     var threePasses = $.ajax({
-                                            url: "https://crossorigin.me/http://www.convert-unix-time.com/api?timestamp=" + issPass + "&returnType=jsonp&callback=convertUnixTimeCallback",
+                                            url: "http://www.convert-unix-time.com/api?timestamp=" + issPass + "&returnType=jsonp&callback=convertUnixTimeCallback",
                                             dataType: "jsonp",
                                             type: "GET"
                                         })
@@ -138,7 +138,6 @@
         $(refreshLocation());
         $(currCrew());
         $(geocodeAddress());
-
     </script>
 </head>
 
@@ -170,9 +169,9 @@
             <h3>View the</h3>
             <h2>International Space Station</h2>
             <p>When will the space station be traveling overhead? <br />Submit your location below to find out!</p>
-            <label for="address">Location:</label>
+            <label for="address">Location: </label>
             <input type="textbox" value="Timnath, CO" id="address" class="js-query">
-            <button id="viewISS">View the ISS!</button>
+            <button id="viewISS">Submit</button>
             <p class="nextLocation"></p>
             <ul id="nextPass"></ul>
             <p class="timeZone"></p>
@@ -191,7 +190,6 @@
             var geocoder = new google.maps.Geocoder();
             geocodeAddress(geocoder, address);
         });
-
     </script>
 </body>
 

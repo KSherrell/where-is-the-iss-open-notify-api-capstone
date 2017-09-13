@@ -1,5 +1,5 @@
 # "Where Is the ISS?" - Thinkful API Capstone Project
-A responsive website that pulls data from two APIs, Open Notify (http://open-notify.org) and Google Maps (https://console.developers.google.com/) to enable users to track the location of the International Space Station (ISS) over the Earth.
+A responsive website that pulls data from three APIs, Open Notify (http://open-notify.org), Google Maps (https://console.developers.google.com/), and Convert Unix Time (http://www.convert-unix-time.com/) to enable users to track the location of the International Space Station (ISS) over the Earth.
 
 ## User Cases
 This app is for three types of users.
@@ -31,9 +31,9 @@ The app's functionality includes:
 * JavaScript
 * jQuery
 
-The app uses AJAX JSON calls to the <a href="http://api.open-notify.org/iss-now.json">Open Notify</a>Open Platform API to return ISS latitude and longitude, the time of the next three passes, and the names of the current crewmembers.
-The app uses AJAX JSON calls to the <a href="http://www.convert-unix-time.com/api">Convert Unix Time</a>Open Platform API to return the unix timestamp converted to an UTC formatted date and time.
-The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps and Google Geocode</a>Open Platform API to return the map showing the current location of the ISS and return the latitude and longitude of the user-input location.
+* The app uses AJAX JSON calls to the <a href="http://api.open-notify.org/iss-now.json">Open Notify</a>Open Platform API to return ISS latitude and longitude, the time of the next three passes, and the names of the current crewmembers.
+* The app uses AJAX JSON calls to the <a href="http://www.convert-unix-time.com/api">Convert Unix Time</a>Open Platform API to return the unix timestamp converted to an UTC formatted date and time.
+* The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps and Google Geocode</a>Open Platform API to return the map showing the current location of the ISS and return the latitude and longitude of the user-input location.
 
 ## Responsive
 App is built to be responsive across mobile, tablet, laptop, and desktop screen resolutions.
