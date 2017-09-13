@@ -7,12 +7,10 @@
     <title>Where is the ISS?</title>
     <link href="https://fonts.googleapis.com/css?family=Orbitron|Monda|Vollkorn" rel="stylesheet">
     <link href="main.css" rel="stylesheet" type="text/css" />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
         "use strict";
-
         //var issLat = 39.989079;
         //var issLon = -172.110723;
         var map;
@@ -31,7 +29,6 @@
                 center: uluru,
                 disableDefaultUI: true,
                 zoomControl: true
-
             });
             var iconBase = 'imgs/iss_icon.png';
             var marker = new google.maps.Marker({
@@ -43,7 +40,7 @@
 
         function currLoc() {
             var currentLocation = $.ajax({
-                    url: "http://api.open-notify.org/iss-now.json",
+                    url: "https://crossorigin.me/http://api.open-notify.org/iss-now.json",
                     dataType: "jsonp",
                     type: "GET"
                 })
@@ -63,7 +60,7 @@
 
         function currCrew() {
             var currentCrewMembers = $.ajax({
-                    url: "http://api.open-notify.org/astros.json",
+                    url: "https://crossorigin.me/http://api.open-notify.org/astros.json",
                     dataType: "jsonp",
                     type: "GET"
                 })
@@ -97,7 +94,7 @@
                             n: 3
                         }
                         var nextPass = $.ajax({
-                                url: "http://api.open-notify.org/iss-pass.json",
+                                url: "https://crossorigin.me/http://api.open-notify.org/iss-pass.json",
                                 data: params,
                                 dataType: "jsonp",
                                 type: "GET"
@@ -109,18 +106,15 @@
 
                                     function convertUnixTimeCallback(result) {}
                                     var threePasses = $.ajax({
-                                            url: "http://www.convert-unix-time.com/api?timestamp=" + issPass + "&returnType=jsonp&callback=convertUnixTimeCallback",
+                                            url: "https://crossorigin.me/http://www.convert-unix-time.com/api?timestamp=" + issPass + "&returnType=jsonp&callback=convertUnixTimeCallback",
                                             dataType: "jsonp",
                                             type: "GET"
                                         })
                                         .done(function(threePasses) {
-
-$(".nextLocation").text(`The ISS will pass over ${address} on:`);
-                       var liOutput = `<li>${threePasses.localDate}</li>`;
-                       $("#nextPass").append(liOutput);
-$(".timeZone").html('Times are shown for UTC (Coordinated Universal Time) time.</br> <a href="http://www.worldtimeserver.com/convert_time_in_UTC.aspx" target="_blank">Click here</a> to learn more about UTC and to convert UTC to your local time.');
-
-
+                                            $(".nextLocation").text(`The ISS will pass over ${address} on:`);
+                                            var liOutput = `<li>${threePasses.localDate}</li>`;
+                                            $("#nextPass").append(liOutput);
+                                            $(".timeZone").html('Times are shown for UTC (Coordinated Universal Time) time.<br /> <a href="http://www.worldtimeserver.com/convert_time_in_UTC.aspx" target="_blank">Click here</a> to learn more about UTC and to convert UTC to your local time.');
                                         })
                                         .fail(function(jqXHR, error, errorThrown) {
                                             console.log(jqXHR);
@@ -140,25 +134,22 @@ $(".timeZone").html('Times are shown for UTC (Coordinated Universal Time) time.<
                 });
             }
         }
-
         $(currLoc());
         $(refreshLocation());
         $(currCrew());
         $(geocodeAddress());
 
     </script>
-
 </head>
 
 <body>
     <header>
-        <h1>Where Is the</br>International Space Station?</h1>
+        <h1>Where Is the<br />International Space Station?</h1>
         <div>
             <iframe src="https://www.youtube.com/embed/xOsOifg4Mm0?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
         <p>The International Space Station travels around our planet at an average speed of 17,227 miles per hour (about 5 miles per second), making one rotation around the earth every 92 minutes. At 220 miles above the surface, the crew onboard the space station have incredible views of the planet, solar system and galaxy. </p>
         <p>From the surface of the Earth, the International Space Station looks like a very fast moving plane - a steady white light moving across the sky. Except for the moon, it is the brightest object in the night sky and is easy to see if you know when and where to look.</p>
-
     </header>
     <main>
         <section class="whereISS">
@@ -170,34 +161,32 @@ $(".timeZone").html('Times are shown for UTC (Coordinated Universal Time) time.<
         </section>
         <section class="crew">
             <h2>The Crew</h2>
-
             <p>The International Space Station is truly an exciting <a href="https://www.nasa.gov/mission_pages/station/cooperation/index.html" target="blank">international endeavor</a> and carries multinational crews of astronauts from the United States, Russia, Europe, Japan, and Canada. </p>
             <p>There are currently <span class="numberOfAstros"></span> astronauts onboard the space station:</p>
-
             <ul id="astronauts"></ul>
             <a href="https://www.nasa.gov/mission_pages/station/expeditions/expedition53/index.html" target="_blank">Click here to visit the NASA website</a> to learn more about the crew of the International Space Station.
         </section>
         <section class="viewISS">
             <h3>View the</h3>
             <h2>International Space Station</h2>
-            <p>When will the space station be traveling overhead? <br>Submit your location below to find out!</p>
+            <p>When will the space station be traveling overhead? <br />Submit your location below to find out!</p>
             <label for="address">Location:</label>
             <input type="textbox" value="Timnath, CO" id="address" class="js-query">
             <button id="viewISS">View the ISS!</button>
             <p class="nextLocation"></p>
             <ul id="nextPass"></ul>
-<p class="timeZone"></p>
+            <p class="timeZone"></p>
         </section>
     </main>
     <footer>
-<p>website design and development by kim sherrell</p>
+        <p>website design and development by kim sherrell</p>
         <a href="https://github.com/KSherrell" target="_blank"><img src="imgs/GitHub-Mark-Light-64px.png"></a>
         <a href="https://www.linkedin.com/in/kim-sherrell-27411228/"><img src="imgs/In-White-48px-R.png"></a>
     </footer>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjzNAJ2vuaVwR0_QnBx9XrgT1my25DLFg&callback=initMap" type="text/javascript"></script>
     <script>
         $('main').on('click', '#viewISS', function() {
-    $("#nextPass").text(" ");
+            $("#nextPass").text(" ");
             var address = $('#address').val();
             var geocoder = new google.maps.Geocoder();
             geocodeAddress(geocoder, address);
