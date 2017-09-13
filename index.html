@@ -9,30 +9,25 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script>
         "use strict";
 
-        //var refreshLoc;
-        // alert("ready!");
-
-//        var issLat = 39.989079; // var issLon = -172.110723;
+        //var issLat = 39.989079;
+        //var issLon = -172.110723;
         var map;
 
         function refreshLocation() {
             var refreshLoc = setInterval(currLoc, 7000);
-            // alert("refresh!");
-
         }
 
         function initMap(issLat = 39.989079, issLon = -172.110723) {
-            //alert("map!");
             var uluru = {
                 lat: issLat,
                 lng: issLon
             };
-            //            console.log(uluru);
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 7,
+                zoom: 3,
                 center: uluru,
                 disableDefaultUI: true,
                 zoomControl: true
@@ -53,8 +48,6 @@
                     type: "GET"
                 })
                 .done(function(currentLocation) {
-                    //console.log(currentLocation);
-
                     var issLat = Number(currentLocation.iss_position.latitude);
                     var issLon = Number(currentLocation.iss_position.longitude);
                     initMap(issLat, issLon);
@@ -75,15 +68,10 @@
                     type: "GET"
                 })
                 .done(function(currentCrewMembers) {
-                    //console.log(currentCrewMembers);
-
                     var crew = currentCrewMembers;
-                    //console.log(crew.people);
                     $(".numberOfAstros").text(`${crew.number}`);
                     $.each(crew.people, function(key, value) {
-                        //console.log(crew.people[key].name);
                         var liOutput = '<li><a href="https://www.google.co.uk/search?q=' + crew.people[key].name + '" target="_blank">' + crew.people[key].name + '</a></li>';
-                        //                console.log(liOutput);
                         $("#astronauts").append(liOutput);
                     });
                 })
@@ -95,12 +83,12 @@
         }
 
         function geocodeAddress(geocoder, address) {
-
             if (geocoder !== undefined) {
                 geocoder.geocode({
                     'address': address
                 }, function(results, status) {
                     if (status === 'OK') {
+                        console.log(results);
                         var myLon = results[0].geometry.viewport.b.f;
                         var myLat = results[0].geometry.viewport.f.f;
                         var params = {
@@ -115,24 +103,24 @@
                                 type: "GET"
                             })
                             .done(function(nextPass) {
-                                // console.log(nextPass);
+                                console.log(nextPass);
                                 $.each(nextPass.response, function(key, value) {
                                     var issPass = nextPass.response[key].risetime;
 
-                                    console.log(issPass);
-
-                                    //                        function convertUnixTimeCallback(result) {
-                                    //                            console.log(result);
-                                    //                        }
+                                    function convertUnixTimeCallback(result) {}
                                     var threePasses = $.ajax({
                                             url: "http://www.convert-unix-time.com/api?timestamp=" + issPass + "&returnType=jsonp&callback=convertUnixTimeCallback",
-                                            // data: issPass,
                                             dataType: "jsonp",
                                             type: "GET"
                                         })
                                         .done(function(threePasses) {
-                                            //alert("passesOverhead!");
-                                            console.log(threePasses);
+
+$(".nextLocation").text(`The ISS will pass over ${address} on:`);
+                       var liOutput = `<li>${threePasses.localDate}</li>`;
+                       $("#nextPass").append(liOutput);
+$(".timeZone").html('Times are shown for UTC (Coordinated Universal Time) time.</br> <a href="http://www.worldtimeserver.com/convert_time_in_UTC.aspx" target="_blank">Click here</a> to learn more about UTC and to convert UTC to your local time.');
+
+
                                         })
                                         .fail(function(jqXHR, error, errorThrown) {
                                             console.log(jqXHR);
@@ -153,24 +141,18 @@
             }
         }
 
-        //            document.getElementById('submit').addEventListener('click', function() { // var geocoder = new google.maps.Geocoder(); // geocodeAddress(geocoder); // });
-        $('#submit').on('click', function() {
-            var geocoder = new google.maps.Geocoder();
-            var address = $('#address').value();
-            geocodeAddress(geocoder, address);
-        });
-
         $(currLoc());
         $(refreshLocation());
         $(currCrew());
         $(geocodeAddress());
+
     </script>
 
 </head>
 
 <body>
     <header>
-        <h1>The International Space Station</h1>
+        <h1>Where Is the</br>International Space Station?</h1>
         <div>
             <iframe src="https://www.youtube.com/embed/xOsOifg4Mm0?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
@@ -180,8 +162,8 @@
     </header>
     <main>
         <section class="whereISS">
-            <h3>Where is the</h3>
-            <h2>International Space Station?</h2>
+            <h3>Find the</h3>
+            <h2>International Space Station</h2>
             <p>The map below is updated every 7 seconds with the location of the ISS as it travels around the earth.</p>
             <div id="map"></div>
             <div id="description"></div>
@@ -195,37 +177,33 @@
             <ul id="astronauts"></ul>
             <a href="https://www.nasa.gov/mission_pages/station/expeditions/expedition53/index.html" target="_blank">Click here to visit the NASA website</a> to learn more about the crew of the International Space Station.
         </section>
-
-        <!-- <section class="news">
-            <h2>ISS News</h2>
-            <iframe src="http://output10.rssinclude.com/output?type=iframe&amp;id=1153762&amp;hash=6812144aa2b011c2fea4ea5f8bb582f7"></iframe>
-        </section>-->
-
         <section class="viewISS">
             <h3>View the</h3>
             <h2>International Space Station</h2>
             <p>When will the space station be traveling overhead? <br>Submit your location below to find out!</p>
-
-
-            <form action="#" class="js-search-form">
-                <label for="address">Address:</label>
-                <input type="textbox" value="Timnath, CO" id="address" class="js-query">
-                <input type="button" id="submit" value="Geocode">
-            </form>
-
-            <p id="nextPass"></p>
+            <label for="address">Location:</label>
+            <input type="textbox" value="Timnath, CO" id="address" class="js-query">
+            <button id="viewISS">View the ISS!</button>
+            <p class="nextLocation"></p>
+            <ul id="nextPass"></ul>
+<p class="timeZone"></p>
         </section>
-
     </main>
-    <footer>Footer content here - contact information</footer>
-
+    <footer>
+<p>website design and development by kim sherrell</p>
+        <a href="https://github.com/KSherrell" target="_blank"><img src="imgs/GitHub-Mark-Light-64px.png"></a>
+        <a href="https://www.linkedin.com/in/kim-sherrell-27411228/"><img src="imgs/In-White-48px-R.png"></a>
+    </footer>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjzNAJ2vuaVwR0_QnBx9XrgT1my25DLFg&callback=initMap" type="text/javascript"></script>
+    <script>
+        $('main').on('click', '#viewISS', function() {
+    $("#nextPass").text(" ");
+            var address = $('#address').val();
+            var geocoder = new google.maps.Geocoder();
+            geocodeAddress(geocoder, address);
+        });
 
-    <script src="https://apis.google.com/js/api.js"></script>
-    <!--    <script src="main-js.js"></script>-->
-
-
-
+    </script>
 </body>
 
 </html>
